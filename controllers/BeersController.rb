@@ -1,6 +1,13 @@
 class BeerController < ApplicationController
 
 
+	get '/ bar' do
+
+		erb :bar
+	end
+
+
+
 	get '/' do 
 		@beers = Beer.all
 		@beers.to_json
@@ -19,10 +26,10 @@ class BeerController < ApplicationController
 
 	end
 
-	delete '/:id'
+	delete '/:id' do
 
 
-		@beer = Beer.find_by(:id params[:id])
+		@beer = Beer.find_by(id: params[:id])
 		@beer.delete
 		'delete'
 
